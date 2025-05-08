@@ -11,7 +11,6 @@ function formatString(input: string, toUpper?: boolean): string {
         
 
 
-
   
 
 function filterByRating(items: { title: string; rating: number }[]): { title: string; rating: number }[]{
@@ -116,3 +115,49 @@ const products = [
   ];
   
 // console.log(getMostExpensiveProduct(products)) 
+
+
+
+
+
+enum Day {
+    Monday,
+    Tuesday,
+    Wednesday,
+    Thursday,
+    Friday,
+    Saturday,
+    Sunday
+}
+  
+function getDayType(day: Day): string{
+    if(day === Day.Sunday || day === Day.Saturday){
+        return "Weekend"
+    }
+    return "Weekday"
+}
+
+// console.log(getDayType(Day.Saturday))
+// console.log(getDayType(Day.Monday))
+// console.log(getDayType(Day.Sunday))
+
+
+
+
+
+
+
+async function squareAsync(n: number): Promise<number>{
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            if(n < 0){
+                reject(new Error('Negative number not allowed'))
+            }else{
+                resolve(n * n)
+            }
+        },1000)
+    })
+}
+
+// console.log(squareAsync(4).then(console.log))
+// console.log(squareAsync(-3).catch(console.error))
