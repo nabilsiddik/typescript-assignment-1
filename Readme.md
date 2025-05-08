@@ -6,59 +6,32 @@ In Typescript we can use both interfaces and types to define the shape of data. 
 
 **Interface**: Interface is typically used to describe the shape of objects and it is favourite for classes and large structures. 
 Code example:
-interface Student{
-	name: string;
-	id: number
-	address: string
-}
+<pre> ```ts interface Student { name: string; id: number; address: string; } ``` </pre>
 
 **Type alias**: Type alias can represent not only the shape of object but also unions, primitives, tuples and other types.
 Code example:
-type User = {
-	name: string;
-	age: number;
-}
-
-type ID = string | number
+<pre> ```ts type User = { name: string; age: number; }; type ID = string | number; ``` </pre>
 
 
 ### Extending and Merging
 **Interface**: Interface can be extended using the “extends” keyword and they can merge declarations automatically.
 
 Code example:
-interface Animal{
-	name: string;
-}
-interface Animal{
-	age: number;
-}
+<pre> ```ts interface Animal { name: string; } interface Animal { age: number; } // Now Animal has both `name` and `age` const dog: Animal = { name: "Buddy", age: 3 }; ``` </pre>
 
 It will merge as  {name: string; age: number}
 
 
 **Type**: Types cannot merge, but they can extend using intersections.
 Code example:
-interface Animal{
-	name: string;
-}
-
-Type NewAnimal = Animal & {age: number}
+<pre> ```ts interface Animal { name: string; } type NewAnimal = Animal & { age: number }; ``` </pre>
 
 
 ### Compatibility with classes
 We can use types with classes but interfaces are the standard tool for that use case. A class can implement an interface.
 
 Code example:
-interface Shape{
-	area(): number;
-}
-
-
-Class Circle implements Shape{
-	area(){
-	    return Math.PI * 1 * 1
-    }
-}
+<pre> ```ts interface Shape { area(): number; } class Circle implements Shape { radius: number; constructor(radius: number) { this.radius = radius; } area(): number { return Math.PI * this.radius * this.radius; } } const myCircle = new Circle(1); console.log(myCircle.area()); ``` </pre>
 
 
 
